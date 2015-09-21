@@ -1,0 +1,69 @@
+group 'test'
+version '1.0-SNAPSHOT'
+
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://repository-saucelabs.forge.cloudbees.com/release"
+    }
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+
+def junitVersion = '4.11'
+def seleniumVersion = '2.45.0'
+def cucumberVersion = '1.2.4'
+
+dependencies {
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.3'
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: seleniumVersion
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: seleniumVersion
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: seleniumVersion
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    testCompile group: 'com.saucelabs', name: 'sauce_junit', version: '2.1.18'
+    testCompile group: 'com.saucelabs', name: 'saucerest', version: '1.0.2'
+    testCompile group: 'com.saucelabs', name: 'sauce_java_common', version: '1.0.14'
+    testCompile group: 'info.cukes', name: 'cucumber-groovy', version: cucumberVersion
+    testCompile group: 'info.cukes', name: 'cucumber-junit', version: cucumberVersion
+}
+
+ test() {
+    testLogging {
+        exceptionFormat "full"
+        events "started", "passed", "skipped", "failed", "standardOut", "standardError"
+        displayGranularity = 0
+    }
+    // This will help limiting the max allowable threads for parallel testing.
+    // This is a per-class limit
+    systemProperty 'junit.parallel.threads', '3'
+    forkEvery = 1
+    maxParallelForks = 1
+}
+
+task cucumber() {
+    dependsOn assemble
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime
+            args = ['--plugin', 'pretty', '--glue', 'src/test/groovy', 'src/test/resources']
+
+        }
+    }
+}
+
+build.dependsOn cucumber
+
+
+
