@@ -34,6 +34,7 @@ test {
 }
 
 task cucumber(type: Test) {
+    useTestNG();
     exclude '**/SauceTestGuineaPig.class'
     testLogging {
         exceptionFormat "full"
@@ -60,7 +61,8 @@ dependencies {
     testCompile group: 'com.saucelabs', name: 'sauce_java_common', version: '1.0.14'
     testCompile group: 'info.cukes', name: 'cucumber-groovy', version: cucumberVersion
     testCompile group: 'info.cukes', name: 'cucumber-junit', version: cucumberVersion
-    testCompile group: 'org.codehaus.gpars', name: 'gpars', version: '1.2.1'
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: cucumberVersion
+
 }
 
 

@@ -1,4 +1,4 @@
-import Tests.WebDriverFactory;
+import Utilities.WebDriverFactory;
 
 import static cucumber.api.groovy.Hooks.*
 
