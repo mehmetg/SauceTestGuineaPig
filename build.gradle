@@ -1,9 +1,10 @@
-group 'test'
+group 'SauceTestGuineaPig'
 version '1.0-SNAPSHOT'
 
 
 apply plugin: 'groovy'
 apply plugin: 'java'
+
 
 repositories {
     mavenLocal()
@@ -12,6 +13,7 @@ repositories {
         url "https://repository-saucelabs.forge.cloudbees.com/release"
     }
 }
+
 
 def junitVersion = '4.11'
 def seleniumVersion = '2.45.0'
@@ -38,7 +40,11 @@ task cucumber(type: Test) {
         events "started", "passed", "skipped", "failed", "standardOut", "standardError"
         displayGranularity = 0
     }
+    maxParallelForks = 3
 }
+
+
+
 
 
 dependencies {
@@ -54,6 +60,7 @@ dependencies {
     testCompile group: 'com.saucelabs', name: 'sauce_java_common', version: '1.0.14'
     testCompile group: 'info.cukes', name: 'cucumber-groovy', version: cucumberVersion
     testCompile group: 'info.cukes', name: 'cucumber-junit', version: cucumberVersion
+    testCompile group: 'org.codehaus.gpars', name: 'gpars', version: '1.2.1'
 }
 
 

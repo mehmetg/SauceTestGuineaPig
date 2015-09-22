@@ -31,8 +31,8 @@ public class SauceTestGuineaPig implements SauceOnDemandSessionIdProvider {
 
     private GuineaPigPage testPage;
 
-    public String username = "mehmetg"; //System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : System.getenv("SAUCE_USERNAME");
-    public String accesskey = "99eb74db-41af-425f-a6a2-23fb5c7c84bb"; //System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : System.getenv("SAUCE_ACCESS_KEY");
+    public String username = System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : System.getenv("SAUCE_USERNAME");
+    public String accesskey = System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : System.getenv("SAUCE_ACCESS_KEY");
 
     public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
 

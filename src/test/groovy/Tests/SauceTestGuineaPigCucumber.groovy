@@ -4,6 +4,7 @@ import cucumber.api.CucumberOptions
 import cucumber.api.junit.Cucumber
 import org.junit.runner.RunWith
 
+
 /**
  * Created by mehmetgerceker on 9/21/15.
  */
@@ -15,6 +16,6 @@ import org.junit.runner.RunWith
         glue = ["src/test/groovy/cucumber/steps", "src/test/groovy/cucumber/support"],
         tags = []
 )
-class SauceTestGuineaPigCucumber {
+class SauceTestGuineaPigCucumber{
 
 }
