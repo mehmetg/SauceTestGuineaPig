@@ -1,16 +1,21 @@
 # Please set the following environment variables before running
  ```
- 	export SAUCE_USERNAME=your_username
- 	export SAUCE_ACCESS_KEY=your_access_key
+ 	export SAUCE_USER_NAME=your_username
+ 	export SAUCE_API_KEY=your_access_key
  ```
 ## Running the tests:
 
 * to run Junit tests: ```./gradlew test```
-* to run Cucumber scenarios ```./gradlew cucumber```
+* to run Cucumber scenarios ```./run_cucumber.sh```
 
 From the project root
 
 ## Known Issue(s):
 
-* Cucumber tests are not truly parallel; can be made to run parallel by feature, but not by scenario. Maven builds could
-be better in that sense.
+* Cucumber tests rely on bash to be parallel.
+* Reporting is only available through Sauce Labs Dashboard due to concurrency management issues.
+
+## Remarks:
+
+* Given time developing a solution similar to the Sauce Labs junit extension would be best.
+* Some portions of the code included are borrowed from sample projects provided bt Sauce Labs and/or their users.

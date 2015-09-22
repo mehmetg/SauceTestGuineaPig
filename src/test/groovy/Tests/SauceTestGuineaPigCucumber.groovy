@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber)
 @CucumberOptions(
-        format = ["pretty", "html:build/reports/cucumber"],
+        //format = ["pretty", "html:build/reports/cucumber"],
         strict = true,
         features = ["src/test/groovy/cucumber/features"],
         glue = ["src/test/groovy/cucumber/steps", "src/test/groovy/cucumber/support"],

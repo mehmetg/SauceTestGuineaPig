@@ -25,14 +25,18 @@ import static org.junit.Assert.*;
 public class WebDriverFactory {
 
     private static SauceREST client = null;
-    private static String username = System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : System.getenv("SAUCE_USERNAME");
-    private static String accesskey = System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : System.getenv("SAUCE_ACCESS_KEY");
+    private static String username = System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : "";
+    private static String accesskey = System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : "";
 
     private static SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
 
-    public static WebDriver getSauceDriver(String os, String version, String browser, String deviceName, String deviceOrientation, String testName) {
-
-
+    public static WebDriver getSauceDriver(String testName) {
+        //The null check is quite pointless, but will keep here just in case getenv is returning "" not null
+        String os = System.getenv("OS") != null ? System.getenv("OS") : null;
+        String browser = System.getenv("BROWSER") != null ? System.getenv("BROWSER") : null;
+        String version = System.getenv("VERSION") != null ? System.getenv("VERSION") : null;
+        String deviceName = System.getenv("DEVICE_NAME") != null ? System.getenv("DEVICE_NAME") : null;
+        String deviceOrientation = System.getenv("DEVICE_ORIENTATION") != null ? System.getenv("DEVICE_ORIENTATION") : null;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -47,6 +51,7 @@ public class WebDriverFactory {
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() +
                         "@ondemand.saucelabs.com:80/wd/hub"),
                 capabilities);
+        return driver;
     }
 
     public static SauceREST getSauceRESTClient(){

@@ -31,8 +31,8 @@ public class SauceTestGuineaPig implements SauceOnDemandSessionIdProvider {
 
     private GuineaPigPage testPage;
 
-    public String username = System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : System.getenv("SAUCE_USERNAME");
-    public String accesskey = System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : System.getenv("SAUCE_ACCESS_KEY");
+    public String username = System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : "";
+    public String accesskey = System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : "";
 
     public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
 
@@ -158,13 +158,13 @@ public class SauceTestGuineaPig implements SauceOnDemandSessionIdProvider {
 
         // windows 7, Chrome 41
         browsers.add(["Windows 7", "41", "chrome", null, null] as String[]);
-        /*
+
         // windows xp, IE 8
         browsers.add(["Windows XP", "8", "internet explorer", null, null] as String[]);
 
         // windows 7, IE 9
         browsers.add(["Windows 7", "9", "internet explorer", null, null] as String[]);
-
+        /*
         // windows 8, IE 10
         browsers.add(["Windows 8", "10", "internet explorer", null, null] as String[]);
 

@@ -5,7 +5,6 @@ version '1.0-SNAPSHOT'
 apply plugin: 'groovy'
 apply plugin: 'java'
 
-
 repositories {
     mavenLocal()
     mavenCentral()
@@ -28,7 +27,7 @@ test {
     }
     // This will help limiting the max allowable threads for parallel testing.
     // This is a per-class limit
-    systemProperty 'junit.parallel.threads', '3'
+    systemProperty 'junit.parallel.threads', '1'
     forkEvery = 1
     maxParallelForks = 1
 }

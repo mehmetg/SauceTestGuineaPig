@@ -3,7 +3,8 @@ import Utilities.WebDriverFactory;
 import static cucumber.api.groovy.Hooks.*
 
 Before(){
-    wd = WebDriverFactory.getSauceDriver("Windows 7", "41", "chrome", null, null, it.scenarioId);
+
+    wd = WebDriverFactory.getSauceDriver(it.scenarioId);
 }
 
 After(){
