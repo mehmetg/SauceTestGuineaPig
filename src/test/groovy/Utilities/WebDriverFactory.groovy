@@ -1,4 +1,4 @@
-package Tests;
+package Utilities;
 
 import Pages.GuineaPigPage;
 import com.saucelabs.common.SauceOnDemandAuthentication
@@ -25,8 +25,10 @@ import static org.junit.Assert.*;
 public class WebDriverFactory {
 
     private static SauceREST client = null;
-    private static String username = System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : System.getenv("SAUCE_USERNAME");
-    private static String accesskey = System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : System.getenv("SAUCE_ACCESS_KEY");
+    private static String username = "mehmetg";
+    //System.getenv("SAUCE_USER_NAME") != null ? System.getenv("SAUCE_USER_NAME") : System.getenv("SAUCE_USERNAME");
+    private static String accesskey = "99eb74db-41af-425f-a6a2-23fb5c7c84bb";
+    //System.getenv("SAUCE_API_KEY") != null ? System.getenv("SAUCE_API_KEY") : System.getenv("SAUCE_ACCESS_KEY");
 
     private static SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
 
