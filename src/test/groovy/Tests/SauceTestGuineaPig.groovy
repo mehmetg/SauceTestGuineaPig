@@ -8,25 +8,18 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.runner.RunWith
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.saucelabs.junit.ConcurrentParameterized;
-import com.saucelabs.junit.SauceOnDemandTestWatcher;
-
-import java.util.LinkedList;
+import com.saucelabs.junit.SauceOnDemandTestWatcher
 
 import static org.junit.Assert.*;
 
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.saucelabs.common.SauceOnDemandSessionIdProvider
 
 /**
  * Created by mehmetgerceker on 9/20/15.
@@ -216,12 +209,21 @@ public class SauceTestGuineaPig implements SauceOnDemandSessionIdProvider {
     public void testCommentSubmit(){
         String testPhrase = 'Hello, world!';
         String testEmail = 'foo@bar.com';
-        this.testPage.enterEmail(testEmail);
+        this.testPage.enterEmailText(testEmail);
         this.testPage.setCommentText(testPhrase);
         this.testPage.submitForm();
         String commentDisplayed = this.testPage.getSubmittedCommentText()
         assertTrue("Expected: " + testPhrase + " Got: " + commentDisplayed, commentDisplayed.endsWith(commentDisplayed));
     }
+
+    @Test
+    public void testEnterEmail(){
+        String testEmail = 'foo@bar.com';
+        this.testPage.enterEmailText(testEmail);
+        String emailDisplayed = this.testPage.getEmailText();
+        assertTrue("Expected: " + testEmail + " Got: " + emailDisplayed, emailDisplayed == testEmail);
+    }
+
     @Test
     public void testUncheckedCheckBoxResetAfterSubmit(){
         this.testPage.checkUncheckedCheckBox();

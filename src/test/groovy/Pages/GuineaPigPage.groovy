@@ -53,7 +53,7 @@ class GuineaPigPage extends PageBase{
         this.commentsTextAreaInput.sendKeys(text);
     }
     public void getCommentText(String text){
-        this.commentsTextAreaInput.getText();
+        this.commentsTextAreaInput.getAttribute("value");
     }
     public void submitForm(){
         clickButton(this.submitButton);
@@ -62,13 +62,13 @@ class GuineaPigPage extends PageBase{
         return this.yourCommentsSpan.getText();
     }
 
-    public void enterEmail(String email){
+    public void enterEmailText(String email){
         setTextInputValue(this.emailTextInput, email);
     }
 
-    public String getEmail()
+    public String getEmailText()
     {
-        return this.emailTextInput.getText();
+        return this.emailTextInput.getAttribute("value");
     }
 
 
